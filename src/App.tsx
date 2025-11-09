@@ -364,7 +364,7 @@ function App() {
                     </div>
                     <div>
                       <p className="font-semibold text-[#2E2E2E]">Phone</p>
-                      <a href="tel:0412345678" className="text-gray-600 hover:text-[#F5B400]">0412 345 678</a>
+                      <a href="tel:0412345678" className="text-gray-600 hover:text-[#F5B400]">0435 761 255</a>
                     </div>
                   </div>
                   <div className="flex items-center gap-4">
@@ -373,7 +373,7 @@ function App() {
                     </div>
                     <div>
                       <p className="font-semibold text-[#2E2E2E]">Email</p>
-                      <a href="mailto:info@myhomeconstructions.com.au" className="text-gray-600 hover:text-[#F5B400]">info@myhomeconstructions.com.au</a>
+                      <a href="mailto:info@myhomeconstruction.com.au" className="text-gray-600 hover:text-[#F5B400]">info@myhomeconstruction.com.au</a>
                     </div>
                   </div>
                   <div className="flex items-center gap-4">
@@ -525,10 +525,9 @@ function App() {
             <div>
               <h4 className="text-[#F5B400] font-bold text-lg mb-4">Contact</h4>
               <ul className="space-y-2 text-sm">
-                <li><a href="tel:0412345678" className="text-gray-400 hover:text-[#F5B400] transition">0412 345 678</a></li>
-                <li><a href="mailto:info@myhomeconstructions.com.au" className="text-gray-400 hover:text-[#F5B400] transition">info@myhomeconstructions.com.au</a></li>
-                <li className="text-gray-400">ABN: 12 345 678 901</li>
-                <li className="text-gray-400">Lic: DB-U 12345</li>
+                <li><a href="tel:0412345678" className="text-gray-400 hover:text-[#F5B400] transition">0435 761 255</a></li>
+                <li><a href="mailto:info@myhomeconstruction.com.au" className="text-gray-400 hover:text-[#F5B400] transition">info@myhomeconstruction.com.au</a></li>
+             
               </ul>
             </div>
           </div>
