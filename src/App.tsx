@@ -115,7 +115,7 @@ function App() {
               <a href="#testimonials" className="hover:text-[#F5B400] transition">Reviews</a>
               <a href="#contact" className="hover:text-[#F5B400] transition">Contact</a>
             </div>
-            <a href="tel:0412345678" className="bg-[#F5B400] text-[#2E2E2E] px-4 py-2 rounded-lg font-semibold hover:bg-[#e5a500] transition flex items-center gap-2">
+            <a href="tel:0435761255" className="bg-[#F5B400] text-[#2E2E2E] px-4 py-2 rounded-lg font-semibold hover:bg-[#e5a500] transition flex items-center gap-2">
               <Phone size={18} />
               <span className="hidden sm:inline">Call Now</span>
             </a>
@@ -129,7 +129,7 @@ function App() {
         <div className="absolute inset-0 bg-[url('/pexels-sliceisop-24827287.jpg')] bg-cover bg-center"></div>
         <div className="relative z-10 text-center px-4 max-w-5xl mx-auto animate-fade-in">
           <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-            Pergolas, Decking & Weatherboard Homes — <span className="text-[#3C3C3C] bg-white px-4 py-2 rounded-lg shadow-2xl inline-block transform hover:scale-105 transition-transform">Built</span> for Melbourne Living
+            Pergolas, Decking  — <span className="text-[#3C3C3C] bg-white px-4 py-2 rounded-lg shadow-2xl inline-block transform hover:scale-105 transition-transform">Built</span> for Melbourne Living
           </h2>
           <p className="text-xl md:text-2xl mb-8 font-light tracking-wide leading-relaxed">
             <span className="bg-white/90 text-[#2E2E2E] px-6 py-3 rounded inline-block">
@@ -140,7 +140,7 @@ function App() {
             <a href="#contact" className="bg-[#F5B400] text-[#2E2E2E] px-8 py-4 rounded-lg font-bold text-lg hover:bg-[#e5a500] transition transform hover:scale-105 shadow-xl">
               Get My Free Quote
             </a>
-            <a href="tel:0412345678" className="bg-white text-[#2E2E2E] px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition transform hover:scale-105 shadow-xl">
+            <a href="tel:0435761255" className="bg-white text-[#2E2E2E] px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition transform hover:scale-105 shadow-xl">
               Call Now — Fast On-Site Quotes
             </a>
           </div>
@@ -364,7 +364,7 @@ function App() {
                     </div>
                     <div>
                       <p className="font-semibold text-[#2E2E2E]">Phone</p>
-                      <a href="tel:0412345678" className="text-gray-600 hover:text-[#F5B400]">0435 761 255</a>
+                      <a href="tel:0435761255" className="text-gray-600 hover:text-[#F5B400]">0435 761 255</a>
                     </div>
                   </div>
                   <div className="flex items-center gap-4">
@@ -525,7 +525,7 @@ function App() {
             <div>
               <h4 className="text-[#F5B400] font-bold text-lg mb-4">Contact</h4>
               <ul className="space-y-2 text-sm">
-                <li><a href="tel:0412345678" className="text-gray-400 hover:text-[#F5B400] transition">0435 761 255</a></li>
+                <li><a href="tel:0435761255" className="text-gray-400 hover:text-[#F5B400] transition">0435 761 255</a></li>
                 <li><a href="mailto:info@myhomeconstruction.com.au" className="text-gray-400 hover:text-[#F5B400] transition">info@myhomeconstruction.com.au</a></li>
              
               </ul>
