@@ -1,6 +1,7 @@
 import { Phone, Mail, MapPin, CheckCircle, Star, ChevronRight } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { supabase, GalleryImage } from './lib/supabase';
+import emailjs from '@emailjs/browser';
 
 function App() {
   const [formData, setFormData] = useState({
@@ -37,22 +38,24 @@ function App() {
         throw dbError;
       }
 
-      // Send email via edge function
-      const emailResponse = await fetch(
-        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-contact-email`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
-          },
-          body: JSON.stringify(formData),
-        }
+      // Send email via EmailJS
+      const templateParams = {
+        from_name: formData.name,
+        from_phone: formData.phone,
+        from_suburb: formData.suburb,
+        from_email: formData.email || 'Not provided',
+        project_type: formData.projectType,
+        message: formData.message || 'No message provided',
+      };
+
+      const emailResponse = await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        templateParams,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
 
-      if (!emailResponse.ok) {
-        console.error('Email error:', await emailResponse.text());
-      }
+      console.log('Email sent successfully:', emailResponse);
 
       // Show success message
       setSubmitted(true);
