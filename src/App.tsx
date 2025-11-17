@@ -108,9 +108,9 @@ function App() {
       {/* Sticky Navigation */}
       <nav className="fixed top-0 w-full bg-[#2E2E2E] text-white z-50 shadow-lg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-32">
+          <div className="flex justify-between items-center h-28">
             <div className="flex items-center">
-              <img src="/My-Home-png.png" alt="My Home Constructions Logo" className="h-28 w-auto" />
+              <img src="/My-Home-png.png" alt="My Home Constructions Logo" className="h-16 w-auto" />
             </div>
             <div className="hidden md:flex space-x-8">
               <a href="#services" className="hover:text-[#F5B400] transition">Services</a>
@@ -500,7 +500,11 @@ function App() {
       {/* Footer */}
       <footer className="bg-[#2E2E2E] text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
+          <div className="grid md:grid-cols-5 gap-8 mb-8">
+            <div>
+              <img src="/My-Home-png.png" alt="My Home Constructions Logo" className="h-24 w-auto mb-4" />
+
+            </div>
             <div>
               <h4 className="text-[#F5B400] font-bold text-lg mb-4">About</h4>
               <p className="text-gray-400 text-sm leading-relaxed">
@@ -530,7 +534,7 @@ function App() {
               <ul className="space-y-2 text-sm">
                 <li><a href="tel:0435761255" className="text-gray-400 hover:text-[#F5B400] transition">0435 761 255</a></li>
                 <li><a href="mailto:info@myhomeconstruction.com.au" className="text-gray-400 hover:text-[#F5B400] transition">info@myhomeconstruction.com.au</a></li>
-             
+
               </ul>
             </div>
           </div>
