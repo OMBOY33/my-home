@@ -57,6 +57,11 @@ function App() {
 
       console.log('Email sent successfully:', emailResponse);
 
+      // Track Google Ads conversion
+      if (window.gtag) {
+        window.gtag('event', 'conversion', {'send_to': 'AW-17721439534/MuYqCNbC9b8bEK7qnoJC'});
+      }
+
       // Show success message
       setSubmitted(true);
       setFormData({
