@@ -59,7 +59,7 @@ function App() {
 
       // Track Google Ads conversion
       if (window.gtag) {
-        window.gtag('event', 'conversion', {'send_to': 'AW-17721439534/MuYqCNbC9b8bEK7qnoJC'});
+        window.gtag('event', 'conversion', { 'send_to': 'AW-17721439534/MuYqCNbC9b8bEK7qnoJC' });
       }
 
       // Show success message
@@ -135,20 +135,33 @@ function App() {
       <section className="relative h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 to-gray-800 mt-16">
         <div className="absolute inset-0 bg-black opacity-40"></div>
         <div className="absolute inset-0 bg-[url('/pexels-sliceisop-24827287.jpg')] bg-cover bg-center"></div>
+
         <div className="relative z-10 text-center px-4 max-w-5xl mx-auto animate-fade-in">
           <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-            Pergolas, Decking  — <span className="text-[#3C3C3C] bg-white px-4 py-2 rounded-lg shadow-2xl inline-block transform hover:scale-105 transition-transform">Built</span> for Melbourne Living
+            Pergolas &amp; Decking —
+            <span className="text-[#3C3C3C] bg-white px-4 py-2 rounded-lg shadow-2xl inline-block transform hover:scale-105 transition-transform">
+              Built
+            </span>
+            for Melbourne Living
           </h2>
+
           <p className="text-xl md:text-2xl mb-8 font-light tracking-wide leading-relaxed">
             <span className="bg-white/90 text-[#2E2E2E] px-6 py-3 rounded inline-block">
               Enhancing homes with <span className="font-semibold">design-driven craftsmanship</span> and lasting quality
             </span>
           </p>
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#contact" className="bg-[#F5B400] text-[#2E2E2E] px-8 py-4 rounded-lg font-bold text-lg hover:bg-[#e5a500] transition transform hover:scale-105 shadow-xl">
+            <a
+              href="#contact"
+              className="bg-[#F5B400] text-[#2E2E2E] px-8 py-4 rounded-lg font-bold text-lg hover:bg-[#e5a500] transition transform hover:scale-105 shadow-xl"
+            >
               Get My Free Quote
             </a>
-            <a href="tel:0435761255" className="bg-white text-[#2E2E2E] px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition transform hover:scale-105 shadow-xl">
+            <a
+              href="tel:0435761255"
+              className="bg-white text-[#2E2E2E] px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition transform hover:scale-105 shadow-xl"
+            >
               Call Now — Fast On-Site Quotes
             </a>
           </div>
