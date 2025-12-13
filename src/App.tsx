@@ -1,4 +1,4 @@
-import { Phone, Mail, MapPin, CheckCircle, Star, ChevronRight } from 'lucide-react';
+import { Phone, Mail, MapPin, CheckCircle, Star, ChevronRight, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { supabase, GalleryImage } from './lib/supabase';
 import emailjs from '@emailjs/browser';
@@ -15,6 +15,7 @@ function App() {
   const [submitted, setSubmitted] = useState(false);
   const [galleryImages, setGalleryImages] = useState<GalleryImage[]>([]);
   const [loading, setLoading] = useState(true);
+  const [showModal, setShowModal] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -106,7 +107,27 @@ function App() {
     };
 
     fetchGalleryImages();
+
+    // Auto-open modal after 2 seconds
+    const timer = setTimeout(() => {
+      setShowModal(true);
+    }, 2000);
+
+    return () => clearTimeout(timer);
   }, []);
+
+  // Prevent body scroll when modal is open
+  useEffect(() => {
+    if (showModal) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [showModal]);
 
   return (
     <div className="min-h-screen bg-white">
@@ -152,12 +173,12 @@ function App() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="#contact"
-              className="bg-[#F5B400] text-[#2E2E2E] px-8 py-4 rounded-lg font-bold text-lg hover:bg-[#e5a500] transition transform hover:scale-105 shadow-xl"
+            <button
+              onClick={() => setShowModal(true)}
+              className="bg-[#F5B400] text-[#2E2E2E] px-8 py-4 rounded-lg font-bold text-lg hover:bg-[#e5a500] transition shadow-xl animate-pulse-glow"
             >
               Get My Free Quote
-            </a>
+            </button>
             <a
               href="tel:0435761255"
               className="bg-white text-[#2E2E2E] px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition transform hover:scale-105 shadow-xl"
@@ -563,6 +584,155 @@ function App() {
           </div>
         </div>
       </footer>
+
+      {/* Floating Contact Form Modal */}
+      {showModal && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 animate-fade-in">
+          {/* Backdrop */}
+          <div className="absolute inset-0 bg-black bg-opacity-60 backdrop-blur-sm"></div>
+
+          {/* Modal Content */}
+          <div className="relative bg-white rounded-2xl shadow-2xl max-w-xl w-full max-h-[90vh] overflow-y-auto animate-slide-up scrollbar-hide">
+            {/* Close Button */}
+            <button
+              onClick={() => setShowModal(false)}
+              className="absolute top-4 right-4 z-10 bg-gray-100 hover:bg-gray-200 rounded-full p-2 transition"
+              aria-label="Close"
+            >
+              <X size={24} className="text-gray-600" />
+            </button>
+
+            {/* Form Content */}
+            <div className="p-6 md:p-8">
+              <form onSubmit={handleSubmit}>
+                {submitted ? (
+                  <div className="text-center py-12">
+                    <div className="inline-flex items-center justify-center w-20 h-20 bg-green-500 rounded-full mb-4">
+                      <CheckCircle size={40} className="text-white" />
+                    </div>
+                    <h4 className="text-2xl font-bold text-[#2E2E2E] mb-2">Thank You!</h4>
+                    <p className="text-gray-600">We'll be in touch within 24 hours.</p>
+                  </div>
+                ) : (
+                  <>
+                    <div className="text-center mb-6">
+                      <div className="inline-block bg-[#F5B400] text-[#2E2E2E] px-4 py-2 rounded-lg font-bold text-sm mb-3">
+                        LIMITED TIME OFFER
+                      </div>
+                      <h3 className="text-3xl md:text-4xl font-bold text-[#2E2E2E] mb-2">Get Your Free Quote</h3>
+                      <p className="text-gray-600">Response within 24 hours guaranteed</p>
+                    </div>
+
+                    <div className="space-y-4">
+                      <div>
+                        <label className="block text-sm font-semibold text-[#2E2E2E] mb-2">Name *</label>
+                        <input
+                          type="text"
+                          name="name"
+                          value={formData.name}
+                          onChange={handleChange}
+                          required
+                          className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#F5B400] focus:ring-2 focus:ring-[#F5B400]/20 transition"
+                          placeholder="Your name"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-semibold text-[#2E2E2E] mb-2">Phone *</label>
+                        <input
+                          type="tel"
+                          name="phone"
+                          value={formData.phone}
+                          onChange={handleChange}
+                          required
+                          className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#F5B400] focus:ring-2 focus:ring-[#F5B400]/20 transition"
+                          placeholder="0400 000 000"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-semibold text-[#2E2E2E] mb-2">Suburb *</label>
+                        <input
+                          type="text"
+                          name="suburb"
+                          value={formData.suburb}
+                          onChange={handleChange}
+                          required
+                          className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#F5B400] focus:ring-2 focus:ring-[#F5B400]/20 transition"
+                          placeholder="Melbourne suburb"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-semibold text-[#2E2E2E] mb-2">Project Type *</label>
+                        <select
+                          name="projectType"
+                          value={formData.projectType}
+                          onChange={handleChange}
+                          required
+                          className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#F5B400] focus:ring-2 focus:ring-[#F5B400]/20 transition"
+                        >
+                          <option value="">Select a service...</option>
+                          <option value="pergola">Pergola</option>
+                          <option value="decking">Decking</option>
+                          <option value="weatherboard">Weatherboard Home</option>
+                          <option value="other">Other</option>
+                        </select>
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-semibold text-[#2E2E2E] mb-2">Email (Optional)</label>
+                        <input
+                          type="email"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleChange}
+                          className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#F5B400] focus:ring-2 focus:ring-[#F5B400]/20 transition"
+                          placeholder="your@email.com"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-semibold text-[#2E2E2E] mb-2">Message (Optional)</label>
+                        <textarea
+                          name="message"
+                          value={formData.message}
+                          onChange={handleChange}
+                          rows={3}
+                          className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#F5B400] focus:ring-2 focus:ring-[#F5B400]/20 transition"
+                          placeholder="Tell us about your project..."
+                        ></textarea>
+                      </div>
+
+                      <button
+                        type="submit"
+                        className="w-full bg-[#F5B400] text-[#2E2E2E] px-8 py-4 rounded-lg font-bold text-lg hover:bg-[#e5a500] transition transform hover:scale-105 shadow-lg"
+                      >
+                        Request Free Quote Now
+                      </button>
+
+                      <p className="text-xs text-gray-500 text-center">
+                        By submitting, you agree to be contacted about your project
+                      </p>
+
+                      <div className="flex items-center justify-center gap-4 pt-4 border-t">
+                        <div className="flex items-center gap-2 text-sm text-gray-600">
+                          <CheckCircle size={16} className="text-green-500" />
+                          <span>No obligation</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-sm text-gray-600">
+                          <CheckCircle size={16} className="text-green-500" />
+                          <span>Fast response</span>
+                        </div>
+                      </div>
+                    </div>
+                  </>
+                )}
+              </form>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
